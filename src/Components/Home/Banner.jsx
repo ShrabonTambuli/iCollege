@@ -2,7 +2,7 @@
 
 const Banner = () => {
     return (
-        <div className="mt-16">
+        <div className="pt-20">
             <div className="hero bg-base-200">
                 <img className="w-full" src="/image/photo-1523050854058-8df90110c9f1.jpg" alt="" />
                 <div className="hero-content text-center bg-[#e2dcdc] bg-opacity-60">

@@ -6,7 +6,7 @@ const Gallery = () => {
             <div className="text-center font-serif text-3xl">
                 <h1> Best Students Photo Gallery</h1>
             </div>
-            <div className="grid grid-cols-1 lg:grid-cols-4 gap-y-8 justify-items-center mt-14">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-y-8 justify-items-center mt-14">
                 <div className="card w-72 h-96 bg-base-100 shadow-xl image-full">
                     <figure><img src="/image/1.jpg" alt="Shoes" /></figure>
                     <div className="card-body">

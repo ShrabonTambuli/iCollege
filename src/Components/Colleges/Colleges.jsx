@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../providers/AuthProvider";
 
 
 const Colleges = () => {
-
+    const { search } = useContext(AuthContext);
 
     const [data, setData] = useState([]);
     const url = ('http://localhost:5000/colleges')
@@ -21,9 +22,11 @@ const Colleges = () => {
                     <div>
                         <h1 className="text-3xl font-serif font-semibold text-center mt-24">All Colleges:</h1>
                     </div>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center gap-y-16 mt-14">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center gap-x-14 gap-y-16 mt-14">
                         {
-                            data.map(d =>
+                           data.filter((item)=>{
+                            return search.toLocaleLowerCase() === ''?item : item.name.toLowerCase().includes(search)
+                        }).map(d =>
                                 <div key={d._id}>
                                     <div className="card w-96 bg-base-100 shadow-xl">
                                         <figure className="px-10 pt-10">

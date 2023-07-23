@@ -4,7 +4,7 @@ import { AuthContext } from "../providers/AuthProvider";
 
 
 const Navbar = () => {
-    const { user, logOut } = useContext(AuthContext);
+    const { user, logOut, setSearch } = useContext(AuthContext);
     const handleLogOut = () => {
         logOut()
             .then()
@@ -49,7 +49,9 @@ const Navbar = () => {
                 <div className="join">
                     <div>
                         <div>
-                            <input className="input input-bordered join-item bg-[#d8dbdda6]" placeholder="Search" />
+                            <input className="input input-bordered join-item bg-[#d8dbdda6]"
+                            type="text"
+                            onChange={(e)=>setSearch(e.target.value)} placeholder="Search" />
                         </div>
                     </div>
                     <div className="indicator">

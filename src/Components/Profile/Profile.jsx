@@ -1,16 +1,38 @@
 import { useContext } from "react";
 import { AuthContext } from "../providers/AuthProvider";
-import { Form } from "react-router-dom";
+import { Form, useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import Swal from "sweetalert2";
 
 
 const Profile = () => {
-    const { register, handleSubmit,  formState: { errors } } = useForm();
-    console.log(errors);
+    const { register, handleSubmit } = useForm();
     const { user } = useContext(AuthContext);
-
+    const {_id} =useParams();
     const onSubmit = data => {
-        console.log(data);
+        const Update = { university: data.university, address: data.address}
+        console.log(Update);
+        fetch(`http://localhost:5000/applies/${_id}`, {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(Update)
+        })
+            .then(res => res.json())
+            .then(data => {
+                // console.log(feedbackUpdate);
+                if (data.modifiedCount > 0) {
+                    Swal.fire({
+                        position: 'top-center',
+                        icon: 'success',
+                        title: 'Sent Admin Feedback',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+
+                }
+            })
     }
 
     return (
@@ -27,7 +49,7 @@ const Profile = () => {
                 {/* You can open the modal using ID.showModal() method */}
                 <button className="btn btn-warning" onClick={() => window.my_modal_4.showModal()}>Edit Profile</button>
                 <dialog id="my_modal_4" className="modal">
-                    <form method="dialog" className="modal-box w-11/12 max-w-5xl">
+                    <div method="dialog" className="modal-box w-11/12 max-w-5xl">
 
                         <div className="card flex-shrink-0 w-full shadow-2xl bg-base-100">
                             <Form onSubmit={handleSubmit(onSubmit)} className="card-body">
@@ -36,7 +58,7 @@ const Profile = () => {
                                         <span className="label-text">Name</span>
                                     </label>
                                     <input type="text" {...register("name", { required: true })} placeholder="name"
-                                    defaultValue={user?.displayName}
+                                        defaultValue={user?.displayName}
                                         name="name" className="input input-bordered" />
                                 </div>
                                 <div className="form-control">
@@ -44,7 +66,7 @@ const Profile = () => {
                                         <span className="label-text">Email</span>
                                     </label>
                                     <input type="text" {...register("email", { required: true })} placeholder="email"
-                                    defaultValue={user?.email}
+                                        defaultValue={user?.email}
                                         name="email" className="input input-bordered" />
                                 </div>
                                 <div className="form-control">
@@ -61,7 +83,7 @@ const Profile = () => {
                                     <input type="text" {...register("address", { required: true })} placeholder="address"
                                         name="address" className="input input-bordered" />
                                 </div>
-                                
+
                                 {/* <div className="form-control mt-6">
                                     <button className="btn btn-warning">Register</button>
                                 </div> */}
@@ -73,7 +95,7 @@ const Profile = () => {
 
                             </Form>
                         </div>
-                    </form>
+                    </div>
                 </dialog>
             </div>
             <div className="text-center mt-6">

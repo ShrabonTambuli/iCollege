@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../providers/AuthProvider";"react-router-dom";
 import { useForm } from "react-hook-form";
-import { Form } from "react-router-dom";
+import { Form} from "react-router-dom";
 
 
 const MyCollege = () => {
@@ -15,7 +15,6 @@ const MyCollege = () => {
             .then(data => setApply(data))
     }, [url])
     console.log(apply);
-
     const { register, handleSubmit } = useForm();
 
     const onSubmit = data => {
@@ -52,6 +51,7 @@ const MyCollege = () => {
                             <h2 className="card-title">{d.university}</h2>
                             <img className="rounded-xl" src={d.photo} alt="" />
                             <p>Name: {d.name}</p>
+                            <p>Subject: {d.subject}</p>
                             <p>Date of Birth: {d.date}</p>
                             <p>Email: {d.email}</p>
                             <p>Phone: {d.phone}</p>
