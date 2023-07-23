@@ -14,6 +14,8 @@ import AuthProvider from './Components/providers/AuthProvider.jsx';
 import Profile from './Components/Profile/Profile.jsx';
 import Colleges from './Components/Colleges/Colleges.jsx';
 import Details from './Components/Details/Details.jsx';
+import Admission from './Components/Admission/Admission.jsx';
+import AdForm from './Components/Admission/AdForm.jsx';
 
 
 const router = createBrowserRouter([
@@ -28,12 +30,22 @@ const router = createBrowserRouter([
       },
       {
         path: "/colleges",
-        element: <Colleges/>
+        element: <Colleges />
       },
       {
         path: "/details/:_id",
-        element: <Details/>,
-        loader: ({params}) => fetch(`http://localhost:5000/details/${params._id}`)
+        element: <Details />,
+        loader: ({ params }) => fetch(`http://localhost:5000/details/${params._id}`)
+      },
+      {
+        path: "/admission",
+        element: <Admission />,
+        loader: () => fetch('http://localhost:5000/colleges')
+      },
+      {
+        path: "/adForm/:_id",
+        element: <AdForm />,
+        loader: ({ params }) => fetch(`http://localhost:5000/details/${params._id}`)
       },
       {
         path: "/login",
@@ -45,7 +57,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/profile",
-        element: <Profile/>
+        element: <Profile />
       }
     ]
   }
