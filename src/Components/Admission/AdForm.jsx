@@ -36,8 +36,8 @@ const AdForm = () => {
     }
 
     return (
-        <div className="mt-10">
-            <div className="hero min-h-screen bg-base-200">
+        <div className="pt-32 pb-20 bg-[rgba(208,214,214,0.8)]">
+            <div className="hero min-h-screen ">
                 <div className="card flex-shrink-0 w-3/6 shadow-2xl bg-base-100">
                     <h1 className="text-center text-xl font-serif font-semibold mt-5">{college.name}</h1>
                     <Form onSubmit={handleSubmit(onSubmit)} className="card-body">
@@ -91,6 +91,7 @@ const AdForm = () => {
                                 <span className="label-text">Photo Url</span>
                             </label>
                             <input type="text" {...register("photo", { required: true })} placeholder="photo"
+                            defaultValue={user?.photoURL}
                                 name="photo" className="input input-bordered" />
                         </div>
                         <div className="form-control mt-6">

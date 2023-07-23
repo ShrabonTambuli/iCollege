@@ -27,7 +27,7 @@ const Details = () => {
                     <h1 className="text-2xl font-serif font-bold text-center mt-16">Events:</h1>
                 </div>
                 <div className="grid grid-cols-1 lg:grid-cols-2 justify-items-center mt-10">
-                    <div className="card w-96 bg-base-100 shadow-xl">
+                    <div className="card w-5/6 bg-base-100 shadow-xl">
                         <figure className="px-10 pt-10">
                             <img src={event} alt="Shoes" className="rounded-xl" />
                         </figure>
@@ -35,7 +35,7 @@ const Details = () => {
                             <h2 className="card-title">{events}</h2>
                         </div>
                     </div>
-                    <div className="card w-96 bg-base-100 shadow-xl">
+                    <div className="card w-5/6 bg-base-100 shadow-xl">
                         <figure className="px-10 pt-10">
                             <img src={sport} alt="Shoes" className="rounded-xl" />
                         </figure>

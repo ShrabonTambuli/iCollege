@@ -16,6 +16,7 @@ import Colleges from './Components/Colleges/Colleges.jsx';
 import Details from './Components/Details/Details.jsx';
 import Admission from './Components/Admission/Admission.jsx';
 import AdForm from './Components/Admission/AdForm.jsx';
+import MyCollege from './Components/MyCollege/MyCollege.jsx';
 
 
 const router = createBrowserRouter([
@@ -46,6 +47,10 @@ const router = createBrowserRouter([
         path: "/adForm/:_id",
         element: <AdForm />,
         loader: ({ params }) => fetch(`http://localhost:5000/details/${params._id}`)
+      },
+      {
+        path: "/my-college",
+        element: <MyCollege/>
       },
       {
         path: "/login",
